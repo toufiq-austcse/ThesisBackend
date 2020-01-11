@@ -21,25 +21,89 @@ public class Data {
 	@Column(name = "dataset")
 	private String dataset;
 	
-	@Column(name = "greennessValue")
-	private String greennessValue;
+	@Column(name = "greennessValue",precision=10, scale=2)
+	private Double greennessValue;
 	
 	@Column(name = "avgNdvi")
 	private String avgNdvi;
 	
 	@Column(name = "image")
 	private String image;
+	
+	@Column(name = "year")
+	private String year;
+	
+	@Column(name = "month")
+	private String month;
+	
+	@Column(name = "day")
+	private String day;
 
 	public Data() {
 	}
+	
+	
 
-	public Data(String district, String dataset, String greennessValue, String avgNdvi, String image) {
+
+	public Data(int id, String district, String dataset, Double greennessValue, String avgNdvi, String image,
+			String year, String month, String day) {
+		super();
+		this.id = id;
 		this.district = district;
 		this.dataset = dataset;
 		this.greennessValue = greennessValue;
 		this.avgNdvi = avgNdvi;
 		this.image = image;
+		this.year = year;
+		this.month = month;
+		this.day = day;
 	}
+
+
+
+
+	public Data(String district, String dataset, Double greennessValue, String avgNdvi, String image, String year,
+			String month, String day) {
+	
+		this.district = district;
+		this.dataset = dataset;
+		this.greennessValue = greennessValue;
+		this.avgNdvi = avgNdvi;
+		this.image = image;
+		this.year = year;
+		this.month = month;
+		this.day = day;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
+	public String getMonth() {
+		return month;
+	}
+
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+
+	public String getDay() {
+		return day;
+	}
+
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
 
 	public int getId() {
 		return id;
@@ -65,11 +129,11 @@ public class Data {
 		this.dataset = dataset;
 	}
 
-	public String getGreennessValue() {
+	public Double getGreennessValue() {
 		return greennessValue;
 	}
 
-	public void setGreennessValue(String greennessValue) {
+	public void setGreennessValue(Double greennessValue) {
 		this.greennessValue = greennessValue;
 	}
 

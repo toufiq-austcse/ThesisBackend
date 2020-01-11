@@ -30,19 +30,25 @@ public class DataRestController {
 	}
 	
 	@GetMapping("/data")
-	public List<Data> getData(@RequestParam String dataset1Title,@RequestParam String dataset2Title,@RequestParam String district){
-		System.out.println(dataset1Title);
-		System.out.println(dataset2Title);
+	public Data getData(@RequestParam String district,@RequestParam String year,@RequestParam String month,@RequestParam String day){
 		
-		Data data1 = dataDao.getData(district,dataset1Title).get(0);
-		Data data2 = dataDao.getData(district,dataset2Title).get(0);
-		
-		List<Data> list = new ArrayList<Data>();
-		list.add(data1);
-		list.add(data2);
-		System.out.println(list.size());
-
-		return list;
+		Data aData = new Data();
+		aData.setDistrict(district);
+		aData.setYear(year);
+		aData.setMonth(month);
+		aData.setDay(day);
+		return this.dataDao.getData(aData).get(0);
 	}
+	
+	@GetMapping("/data/maxmin")
+	public List<Data> getData(@RequestParam String district,@RequestParam String year1,@RequestParam String year2){
+		
+		List<Data> myList = new ArrayList<Data>();
+		List<Data> result = this.dataDao.getMinAndMaxData(district, year1, year2);
+		myList.add(result.get(0));
+		myList.add(result.get(result.size() -1));
+		return myList;
+	}
+	
 
 }

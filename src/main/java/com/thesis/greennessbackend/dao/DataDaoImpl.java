@@ -42,10 +42,16 @@ public class DataDaoImpl implements DataDao{
 	
 	@Override
 	@Transactional
-	public List<Data> getData(String district,String datasetTitle) {
+	public List<Data> getData(Data aData) {
 		// TODO Auto-generated method stub
-		return dataRepository.getData(district,datasetTitle);
+		return dataRepository.getData(aData.getDistrict(), aData.getYear(), aData.getMonth(), aData.getDay());
 		
+	}
+
+	@Override
+	public List<Data> getMinAndMaxData(String district, String year1, String year2) {
+		// TODO Auto-generated method stub
+		return this.dataRepository.getMaximumParcentageData(district, year1, year2);
 	}
 
 

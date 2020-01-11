@@ -13,4 +13,6 @@ public interface GreenPercentageRepository extends JpaRepository<GreenPercentage
 	
 	@Query(value = "SELECT * FROM green_percentage WHERE district = :district AND year BETWEEN :year1 AND :year2", nativeQuery = true)
 	public List<GreenPercentage> getPercentageForYearRange(String district,String year1,String year2);
+	
+	
 }
